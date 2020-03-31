@@ -1,0 +1,67 @@
+##2020/3/31学习日志##
+今天看完类，做梦吧。昨天暴露出的问题是知识掌握不牢，似懂非懂，讲不出口。今天的目标是把昨天遗留的问题，整理出来，争取看完类。
+###上午###
+2点半醒的3点多背单词100个，背到4点多，又躺了会，但是睡不着。
+6点起来吃完看了会网页出门买菜。下面开始一天的学习。
+8点开始看的，把类，类对象，类方法，实例对象，实例方法，静态函数学习了一遍，除了静态函数的具体应用场景不明确，其他的都搞懂了。
+9点多睡觉到11点半。一上午就没了
+###下午###
+中午12点15分左右开始的下午学习。把昨天的问题都答完，整理完就下午4点了。我下午真的没玩手机，基本也没干别的，时间过的太快了。看错了，是14点。人傻了。
+14点继续看廖的教程，廖很多东西讲的对新手不友好，需要扩展了解很多相关内容。获取对象信息type（），isinstance（），dir（）hasattr（）
+15点继续看实例属性和类属性，实例绑定，class绑定，__slots__，@property，多重继承
+18点50吃完了，继续看定制类。__str__,__iter__,__getitem__,__getattr__,__call__
+19点28分，枚举类看不动了，又困了。去睡了，半夜起来继续。
+
+###总结###
+实例绑定属性，实例绑定方法，class绑定方法，__slots__
+
+class Student(object):
+	pass
+
+	s = Student()
+	s.name = 'jimmy' #绑定属性
+
+	def set_age(self,age):
+		self.age = age	#绑定方法
+
+	def set_score(self,score):
+		self.score = score
+		Student.set_score = set_score	#绑定类方法
+
+	__slots__(name,age)		#只允许添加name和age属性
+
+
+使用@property，会用，但说不明白其中的意义，只知为了安全性。
+
+class Screen(object):
+    @property
+    def width(self):
+        return self._width
+    
+    @width.setter
+    def width(self,value):
+        self._width = value
+
+    @property
+    def height(self):
+        return self._height
+
+    @height.setter
+    def height(self,value):
+        self._height = value
+    
+    @property
+    def resolution(self):
+        return self._width * self._height
+
+// 测试:
+s = Screen()
+s.width = 1024
+s.height = 768
+print('resolution =', s.resolution)
+if s.resolution == 786432:
+    print('测试通过!')
+else:
+    print('测试失败!')
+
+定制类。__str__,__iter__,__getitem__,__getattr__,__call__
