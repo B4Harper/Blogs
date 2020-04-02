@@ -1,0 +1,104 @@
+##2020年4月2日##
+昨天日志忘保存了，晚上统一整理一下。
+####上午####
+1点多醒的，5点多补了半个小时觉，好像还没睡着，单词背了。
+看了封装继承多态，多继承中的MRO顺序
+10点看property属性，装饰器
+####下午####
+12点看with
+
+
+###总结###
+
+封装，继承，多态
+封装指私有变量防止外部访问改写。
+继承指子类继承父类的变量和方法。
+多态指子类中若重写了父类的同名方法，则只调用子类的方法，否则调用父类的方法。
+
+多继承中的MRO顺序
+多继承中，当子类用指向父类的方式调用父类方法，且孙类也用此方法调用子类方法，用孙类调用__mro__方法时，返回一个元祖。元祖中的元素顺序为整个多继承中类调用方法的顺序。单继承中也可以用调用__mro__方法。
+
+property属性，应用
+@property是装饰器的一种，有4种属性，取值，设置，删除，返回说明信息。前两种是常用属性。
+私有属性添加getter和setter方法
+
+#######方法一#######
+	class car(object):
+						
+		def __init__(self):
+			self.num = 123
+
+		def get_num(self):
+			return self.num
+
+		def set_num(self,value):
+			self.set_num = value
+
+		def del_num(self):
+			del self.num
+			return self.del_num
+
+	ca = car()
+	ca.get_num()
+	ca.set_num(34)
+	ca.del_num()
+
+######方法二######
+
+	class car(object):
+
+		def __init__(self):
+			self.Price = 100000
+			self.discount = 0.8
+		
+		@property
+		def price(self):
+			new_price = self.Price * new_price
+			return new_Price
+
+		@price.setter
+		def price(self,value):
+			self.Price = value
+
+		@price.deleter
+		def price(self):
+			del self.Price
+
+	ca = car()
+	ca.price
+	ca.price = 129999
+	del ca.price
+
+#######方法三#######
+
+	class WSGIRequest(object):
+		
+		def __init__():
+			pass
+
+		def _get_post(self):
+			if not hasattr(self,'_post'):
+				self._load_post_and_files()
+			return self._post
+
+		def _set_post(self, post):
+			self._post = post
+
+		POST = property(_get_post,_set_post)
+
+	ws = WSGIRequest()
+	ws.POST
+	ws.POST = 32
+
+with ,try	try是测试语句。结构是
+
+	try: A
+	except:	B
+	finally:	C
+	END
+运行顺序是运行A如果出现B错误运行C结束。
+try	的特点是程序出错了也能让程序结束运行。with也有同样的特点，其结构是
+	def m3():
+		with open("output.txt","r") as f:
+			f.write("Python")
+运行顺序是把f指向open("output.txt","r")运行结果返回值，输入output.txt，显示Python，结束。
